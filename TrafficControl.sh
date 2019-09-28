@@ -18,11 +18,15 @@ then
 else
     echo '0' > /var/log/traffic.log
     echo '0' >> /var/log/traffic.log
+    rv_last_traffic=0
+    rv_total_traffic=0
 fi
 
-if ((rv_transmit>${1}))
+#echo "last_traffic = ${rv_last_traffic}"
+#echo "total_traffic = ${rv_total_traffic}"
+
+if ((rv_total_traffic>${1}))
 then
-    rv_total_traffic=$(cat ${rv_trafficfile} | tail -n 1)
     echo '0' > /var/log/traffic.log
     echo ${rv_total_traffic} >> ${rv_trafficfile}
     poweroff
