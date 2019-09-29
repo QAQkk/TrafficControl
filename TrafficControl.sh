@@ -13,7 +13,7 @@ then
     rv_last_traffic=$(cat ${rv_trafficfile} | head -n 1)
     rv_total_traffic=$(cat ${rv_trafficfile} | tail -n 1)
     ((rv_total_traffic+=(rv_transmit-rv_last_traffic)))
-    echo ${rv_last_traffic} > ${rv_trafficfile}
+    echo ${rv_transmit} > ${rv_trafficfile}
     echo ${rv_total_traffic} >> ${rv_trafficfile}
 else
     echo '0' > /var/log/traffic.log
